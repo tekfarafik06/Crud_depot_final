@@ -1,8 +1,7 @@
 # CRUD
+## Membre de groupe:
+### Thiziri KECHIDI
+### Salim MAHDJANE
+### Rafik TEKFA
+### Mourad HADJALI
 
-#Membres du groupe:
- 
-##Thiziri KECHIDI
-##Salim MAHDAJANE
-##Rafik TEKFA
-##Mourad HADJ ALI
