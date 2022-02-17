@@ -23,6 +23,7 @@ class EntiteNageur
      */
     public function setIdNageur(int $id_nageur): void
     {
+
         $this->id_nageur = $id_nageur;
     }
 

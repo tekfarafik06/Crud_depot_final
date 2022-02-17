@@ -52,12 +52,26 @@ private $nomTable;
 * @param $password
 * @param $nomTable
 */
-public function __construct($host, $db, $user, $password) {
+    public function __construct($sgbd, $host, $db, $user, $password, $nomTable)
+    {
+        switch ($sgbd) {
+            case "mysql":
+                $this->pdo = new PDO("mysql:host=".$host.";dbname=".$db, $user, $password);
+                break;
+            case "pgsql":
+                $this->pdo = new PDO("pgsql:host=".$host." dbname=".$db." user=".$user
+                    ." password=".$password);
+                break;
+            default:
+                exit;
 
-    $this->pdo = new PDO("mysql:host=".$host.";dbname=".$db, $user, $password);
-    // pour récupérer aussi les exceptions provenant de PDOStatement
-    $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
+        }
+
+        // pour récupérer aussi les exceptions provenant de PDOStatement
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->nomTable = $nomTable;
+
+    }
 
     /**
      * @param string $nomTable
