@@ -58,14 +58,16 @@ if(isset($_GET['action']))
             break;
         case 'create':
             $nbEpreuves = $myPDOEpreuve->count();
-            $contenu .= $vue->getFormulaire4Epreuve(array('id_epreuve' => array ('type'=>'number', 'default'=> $nbEpreuves+1), 'nom_epreuve' => 'text', 'type_epreuve' => 'text'));
+            $contenu .= $vue->getFormulaire4Epreuve(array('id_epreuve' => array ('type'=>'number', 'default'=> $nbEpreuves+1), 'nom_epreuve' => 'text', 'type_epreuve' => 'text','statut_epreuve' => 'text'));
             $_SESSION['etat'] = 'création';
             break;
         case 'update':
             $epreuve = $myPDOEpreuve->get('id_epreuve',$_GET['id_epreuve']);
             $contenu .= $vue->getFormulaire4Epreuve(array('id_epreuve'=>array('type'=>'number','default'=>$epreuve->getIdEpreuve()),
                 'nom_epreuve'=>array('type'=>'text','default'=>$epreuve->getNomEpreuve()),
-                'type_epreuve'=>array('type'=>'text','default'=>$epreuve->getTypeEpreuve())));
+                'type_epreuve'=>array('type'=>'text','default'=>$epreuve->getTypeEpreuve()),
+                'statut_epreuve'=>array('type'=>'text','default'=>$epreuve->getStatutEpreuve()),
+            ));
             $_SESSION['etat'] = 'modification';
             break;
         case 'delete':
@@ -80,11 +82,11 @@ else
     if (isset($_SESSION['etat']))
         switch($_SESSION['etat']) {
             case 'création':
-                $myPDOEpreuve->insert(array('id_epreuve'=>$_GET['id_epreuve'], 'nom_epreuve'=>$_GET['nom_epreuve'], 'type_epreuve'=>$_GET['type_epreuve']));
+                $myPDOEpreuve->insert(array('id_epreuve'=>$_GET['id_epreuve'], 'nom_epreuve'=>$_GET['nom_epreuve'], 'type_epreuve'=>$_GET['type_epreuve'],'statut_epreuve'=>$_GET['statut_epreuve']));
                 $_SESSION['etat'] = 'créé';
                 break;
             case 'modification':
-                $myPDOEpreuve->update('id_epreuve', array('id_epreuve'=>$_GET['id_epreuve'], 'nom_epreuve'=>$_GET['nom_epreuve'], 'type_epreuve'=>$_GET['type_epreuve']));
+                $myPDOEpreuve->update('id_epreuve', array('id_epreuve'=>$_GET['id_epreuve'], 'nom_epreuve'=>$_GET['nom_epreuve'], 'type_epreuve'=>$_GET['type_epreuve'],'statut_epreuve'=>$_GET['statut_epreuve']));
                 $_SESSION['etat'] = 'modifié';
                 break;
             case 'suppression':
@@ -105,7 +107,7 @@ $message .= "<p>La table epreuve contient ".$nbEpreuves." enregistrements.</p>\n
 $contenu .=
     "<form action='?' method='GET'>
             <select name='action'>
-            <option value='read'></option>
+            <option value='read'>lire</option>
             <option value='update'>Modifier</option>
             <option value='delete'>Supprimer</option>
 </select>

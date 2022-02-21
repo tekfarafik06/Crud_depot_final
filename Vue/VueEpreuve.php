@@ -13,6 +13,8 @@ class VueEpreuve
         $ch .= "<tr><td>" . $epreuve->getIdEpreuve() . "</td>\n";
         $ch .= "<td>" . $epreuve->getNomEpreuve() . "</td>\n";
         $ch .= "<td>" . $epreuve->getTypeEpreuve(). "</td>\n";
+        $ch .= "<td>" . $epreuve->getStatutEpreuve(). "</td>\n";
+
         $ch.= "</tr></table>\n";
         return $ch;
 
@@ -50,6 +52,8 @@ class VueEpreuve
                 $ch .= "<li>".$epreuve->getIdEpreuve()." ";
                 $ch .= $epreuve->getNomEpreuve()." ";
                 $ch .= $epreuve->getTypeEpreuve()." ";
+                $ch .= $epreuve->getStatutEpreuve()." ";
+
                 $ch .= "<a href='?action=update&id_epreuve=".$epreuve->getIdEpreuve()."'>Modifier</a> ";
                 $ch .= "<a href='?action=delete&id_epreuve=".$epreuve->getIdEpreuve()."'>Supprimer</a> ";
                 $ch .= "</li>\n";
