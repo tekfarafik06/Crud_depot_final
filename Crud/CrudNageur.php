@@ -36,7 +36,7 @@ session_start();
 // initialisation de la connexion via l'instance de MyPDO
 $myPDONageur = new MyPDO('mysql', $_ENV['host'], $_ENV['db'], $_ENV['user'], $_ENV['password'], 'nageur');
 
-
+;
 
 
 
