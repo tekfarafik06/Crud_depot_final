@@ -71,7 +71,7 @@ if(isset($_GET['action']))
         case 'delete':
             $myPDOEpreuve->delete(array('id_epreuve'=>$_GET['id_epreuve']));
             $_SESSION['etat'] = 'suppression';
-            break;œ
+            break;
         default:
             $message .= "<p>Action ".$_GET['action']." non implémentée.</p>\n";
     }
