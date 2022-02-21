@@ -68,3 +68,8 @@ class VueParticipe
 
 
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 0b38590e25138da8e7f9ddc77834ab93885b2f8c

@@ -5,7 +5,11 @@ require_once "../Vue/VueParticipe.php";
 
 require_once "../Connexion/VariableDsn.php";
 require_once "../Connexion/MyPDO.php";
+<<<<<<< HEAD
 require_once "../Entite/EntiteParticipe.php";
+=======
+require_once "../Entite/EntiteNageur.php";
+>>>>>>> 0b38590e25138da8e7f9ddc77834ab93885b2f8c
 
 
 
@@ -36,7 +40,11 @@ session_start();
 // initialisation de la connexion via l'instance de MyPDO
 $myPDOParticipe = new MyPDO('mysql', $_ENV['host'], $_ENV['db'], $_ENV['user'], $_ENV['password'], 'nageur');
 
+<<<<<<< HEAD
 echo "jhjj";
+=======
+
+>>>>>>> 0b38590e25138da8e7f9ddc77834ab93885b2f8c
 
 
 
@@ -54,7 +62,12 @@ if(isset($_GET['action']))
         case 'read':
             $nageur = $myPDOParticipe->get('id_nageur', $_GET['id_nageur']);
             $epreuve = $myPDOParticipe->get('id_epreuve', $_GET['id_epreuve']);
+<<<<<<< HEAD
             $contenu .= $vue->getHTML4Participe($nageur);
+=======
+            $contenu .= $vue->getHTML4($nageur);
+            $contenu .= $vue->getHTML4Nageur($epreuve);
+>>>>>>> 0b38590e25138da8e7f9ddc77834ab93885b2f8c
             $_SESSION['etat'] = 'lecture';
             break;
         case 'create':
@@ -139,3 +152,7 @@ echo getFinHTML();
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0b38590e25138da8e7f9ddc77834ab93885b2f8c

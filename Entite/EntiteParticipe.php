@@ -1,9 +1,10 @@
 <?php
+
 class EntiteParticipe
 {
     protected int $id_nageur;
     protected int $id_epreuve;
-    protected VARCHAR $date_epreuve;
+    protected VARCHAR  $date_epreuve;
     protected double $performance;
     protected int $classement;
     protected VARCHAR $nom_medaille;
