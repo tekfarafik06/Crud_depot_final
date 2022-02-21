@@ -1,13 +1,14 @@
 <?php
-class EntiteParticipe{
+class EntiteParticipe
+{
     protected int $id_nageur;
     protected int $id_epreuve;
-    protected int $date_epreuve;
-    protected int $performance;
+    protected VARCHAR $date_epreuve;
+    protected double $performance;
     protected int $classement;
-    protected string $nom_medaille;
+    protected VARCHAR $nom_medaille;
 
-    /**
+    /** 
      * @return int
      */
     public function getIdNageur(): int
@@ -15,7 +16,7 @@ class EntiteParticipe{
         return $this->id_nageur;
     }
 
-    /**
+    /** 
      * @param int $id_nageur
      */
     public function setIdNageur(int $id_nageur): void
@@ -23,7 +24,7 @@ class EntiteParticipe{
         $this->id_nageur = $id_nageur;
     }
 
-    /**
+    /** 
      * @return int
      */
     public function getIdEpreuve(): int
@@ -31,7 +32,7 @@ class EntiteParticipe{
         return $this->id_epreuve;
     }
 
-    /**
+    /** 
      * @param int $id_epreuve
      */
     public function setIdEpreuve(int $id_epreuve): void
@@ -39,39 +40,39 @@ class EntiteParticipe{
         $this->id_epreuve = $id_epreuve;
     }
 
-    /**
-     * @return int
+    /** 
+     * @return VARCHAR
      */
-    public function getDateEpreuve(): int
+    public function getDateEpreuve(): VARCHAR
     {
         return $this->date_epreuve;
     }
 
-    /**
-     * @param int $date_epreuve
+    /** 
+     * @param VARCHAR $date_epreuve
      */
-    public function setDateEpreuve(int $date_epreuve): void
+    public function setDateEpreuve(VARCHAR $date_epreuve): void
     {
         $this->date_epreuve = $date_epreuve;
     }
 
-    /**
-     * @return int
+    /** 
+     * @return float
      */
-    public function getPerformance(): int
+    public function getPerformance(): float
     {
         return $this->performance;
     }
 
-    /**
-     * @param int $performance
+    /** 
+     * @param float $performance
      */
-    public function setPerformance(int $performance): void
+    public function setPerformance(float $performance): void
     {
         $this->performance = $performance;
     }
 
-    /**
+    /** 
      * @return int
      */
     public function getClassement(): int
@@ -79,7 +80,7 @@ class EntiteParticipe{
         return $this->classement;
     }
 
-    /**
+    /** 
      * @param int $classement
      */
     public function setClassement(int $classement): void
@@ -87,21 +88,21 @@ class EntiteParticipe{
         $this->classement = $classement;
     }
 
-    /**
-     * @return string
+    /** 
+     * @return VARCHAR
      */
-    public function getNomMedaille(): string
+    public function getNomMedaille(): VARCHAR
     {
         return $this->nom_medaille;
     }
 
-    /**
-     * @param string $nom_medaille
+    /** 
+     * @param VARCHAR $nom_medaille
      */
-    public function setNomMedaille(string $nom_medaille): void
+    public function setNomMedaille(VARCHAR $nom_medaille): void
     {
         $this->nom_medaille = $nom_medaille;
     }
 
-}
 
+}
