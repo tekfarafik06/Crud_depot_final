@@ -1,12 +1,12 @@
 <?php
-namespace natation;
-use natation\EntiteEpreuve;
+namespace participe;
+use natation\EntiteParticipe;
 
 
 class VueParticipe
 {
 
-    public function getHTML4Epreuve(EntiteEpreuve $participe): string
+    public function getHTML4Participe(\EntiteParticipe $participe): string
     {
         $ch = "<table border='1'>
         <tr><th>liv_num</th><th>liv_titre</th><th>liv_depot_legal</th></tr><tr>\n";
@@ -22,12 +22,12 @@ class VueParticipe
     }
 
     /**
-     * production d'une string contenant un formulaire HTML
-     * destiné à saisir une nouveau livre ou à modifier un livre existant
+     *
+     *
      * @param array $assoc
      * @return string
      */
-    public function getFormulaire4Epreuve(array $assoc): string
+    public function getFormulaire4Participe(array $assoc): string
     {
         $ch = "<form action='".$_SERVER['PHP_SELF']."' method='GET'>\n";
         foreach ($assoc as $col => $val) {
