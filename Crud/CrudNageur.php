@@ -39,9 +39,7 @@ function getFinHTML(): string
 session_start();
 
 // initialisation de la connexion via l'instance de MyPDO
-$myPDONageur = new MyPDO('mysql', $_ENV['host'], $_ENV['db'], $_ENV['user'], $_ENV['password'], 'nageur');
-
-;
+$myPDONageur = new MyPDO('mysql', $_ENV['host'], $_ENV['db'], $_ENV['user'], $_ENV['password'], 'nageur');;
 
 
 
@@ -89,7 +87,7 @@ else
     if (isset($_SESSION['etat']))
     switch ($_SESSION['etat']) {
         case 'création':
-            $myPDONageur->insert(array('id_nageur' => $_GET['id_nageur'], 'nom_nageur' => $_GET['nom_nageur'], 'prenom_nageur' => $_GET['prenom_nageur'], 'pays_nageur' => $_GET['pays_nageur'], 'sexe_nageur' => $_GET['sexe_nageur']));
+            $myPDONageur->insert(array('id_nageur' => $_GET['null'], 'nom_nageur' => $_GET['nom_nageur'], 'prenom_nageur' => $_GET['prenom_nageur'], 'pays_nageur' => $_GET['pays_nageur'], 'sexe_nageur' => $_GET['sexe_nageur']));
             $_SESSION['etat'] = 'créé';
             break;
         case 'modification':
