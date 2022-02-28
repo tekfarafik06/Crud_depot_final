@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/.idea/perso.iml" filepath="$PROJECT_DIR$/.idea/perso.iml" />
-=======
       <module fileurl="file://$PROJECT_DIR$/.idea/crud.iml" filepath="$PROJECT_DIR$/.idea/crud.iml" />
->>>>>>> 0b38590e25138da8e7f9ddc77834ab93885b2f8c
     </modules>
   </component>
 </project>
