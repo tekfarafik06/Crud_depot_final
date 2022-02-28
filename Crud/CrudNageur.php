@@ -5,7 +5,6 @@ namespace natation;
 use natation\MyPDO;
 
 require_once "../Vue/VueNageur.php";
-
 require_once "../Connexion/VariableDsn.php";
 require_once "../Connexion/MyPDO.php";
 require_once "../Entite/EntiteNageur.php";
@@ -60,7 +59,7 @@ if (isset($_GET['action']))
             $_SESSION['etat'] = 'lecture';
             break;
         case 'create':
-            $nbNageurs = $myPDONageur->count();
+            $nbNageurs = $myPDONageur->getCountValue();
             $contenu .= $vue->getFormulaire4Nageur(array('id_nageur' => array('type' => 'number', 'default' => $nbNageurs + 1), 'nom_nageur' => 'text', 'prenom_nageur' => 'text', 'pays_nageur' => 'text', 'sexe_nageur' => 'text'));
             $_SESSION['etat'] = 'création';
             break;
@@ -105,11 +104,11 @@ else
     }
 
 
-// affichage du nombre total de livre :
-$nbNageurs = $myPDONageur->count();
+// affichage du nombre total de nageur :
+$nbNageurs = $myPDONageur->getCountValue();
 $message .= "<p>La table nageur contient " . $nbNageurs . " enregistrements.</p>\n";
 
-// sélection/modification/suppression/ d'un livre
+// sélection/modification/suppression/ d'un nageur
 
 $contenu .=
     "<form action='?' method='GET'>
