@@ -45,12 +45,7 @@ $contenu = "";
 $message = "";
 
 
-$vue = new \natation\VueParticipe();
 
-$myPDOParticipe->initPDOS_selectRK();
-$va =  $myPDOParticipe->getAllCOURSE();
-$j = $myPDOParticipe->getNomTable;
-echo $va;
 
 
 
