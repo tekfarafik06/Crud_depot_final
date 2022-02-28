@@ -2,5 +2,5 @@
 
 $_ENV['host'] = "localhost";
 $_ENV['db'] = "natation";
-$_ENV['user'] = "hadjali";
-$_ENV['password'] = "hadjali";
+$_ENV['user'] = "";
+$_ENV['password'] = "";
