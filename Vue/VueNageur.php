@@ -10,9 +10,10 @@ class VueNageur
 
     public function getHTML4Nageur(EntiteNageur $nageur): string
     {
+
         $ch = "<table border='1'>
         <tr><th>liv_num</th><th>liv_titre</th><th>liv_depot_legal</th></tr><tr>\n";
-        $ch .= "<tr><td>" . $nageur->getIdNageur() . "</td>\n";
+        $ch .= "<tr>" . $nageur->getIdNageur() . "\n";
         $ch .= "<td>" . $nageur->getNomNageur() . "</td>\n";
         $ch .= "<td>" . $nageur->getPrenomNageur() . "</td>\n";
         $ch .= "<td>" . $nageur->getPaysNageur() . "</td>\n";
@@ -29,37 +30,60 @@ class VueNageur
      */
     public function getFormulaire4Nageur(array $assoc): string
     {
-        $ch = "<form action='" . $_SERVER['PHP_SELF'] . "' method='GET'>\n";
+        $ch = "<div <div  id='formulaire'><div class='column is-1 '></div><div class='column'><form action='" . $_SERVER['PHP_SELF'] . "' method='GET'>\n";
+        $i = 0;
         foreach ($assoc as $col => $val) {
             if (is_array($val)) {
-                $ch .= "$col : <input name='$col' type='" . $val['type']
-                    . "' value='" . $val['default'] . "' />\n";
-            } else
-                $ch .= "$col : <input type='$val' name='$col' />\n";
+                if ($i == 0) {
+                    $ch .= "<input class='input is-info' name='$col' type='hidden' value='" . $val['default'] . "'/>\n";
+                } else
+                    $ch .= "$col : <input class='input is-info' name='$col' type='" . $val['type']
+                        . "' value='" . $val['default'] . "'/></a>\n";
+            } else {
+
+                $ch .= "$col : <input class='input is-info' type='$val' name='$col' />\n";
+            }
+            ++$i;
         }
-        $ch .= "<input type='submit' name='Valider' value='Sauver'/>\n";
 
 
-        return $ch . "</form>\n";
+        $ch .= "<center></center><input class='button has-background-success is-outlined' type='submit' name='Valider' value='Modifier'/></center>\n";
+
+
+        return $ch . "</form></div><div class='column is-1 '></div></div>\n";
     }
-
-
     public function getAllNageur(array $tabEntiteNageur): string
     {
-        $ch = "<ul>\n";
+        $ch = "<div class=\"columns\">
+               <div class=\"column\">
+
+               <table class=\"table is-striped is-fluid  \">
+               <tr>";
         foreach ($tabEntiteNageur as $nageur) {
             if ($nageur instanceof EntiteNageur) {
-                $ch .= "<li>" . $nageur->getIdNageur() . " ";
-                $ch .= $nageur->getNomNageur() . " ";
-                $ch .= $nageur->getPrenomNageur() . " ";
-                $ch .= $nageur->getPaysNageur() . " ";
-                $ch .= $nageur->getSexeNageur() . " ";
-                $ch .= "<a href='?action=insert&id_nageur=" . $nageur->getIdNageur() . "'>ajouter</a> ";
-                $ch .= "<a href='?action=update&id_nageur=" . $nageur->getIdNageur() . "'>Modifier</a> ";
-                $ch .= "<a href='?action=delete&id_nageur=" . $nageur->getIdNageur() . "'>Supprimer</a> ";
-                $ch .= "</li>\n";
+
+                $ch .= "<td>";
+                $ch .= " <tr>
+
+
+                <th><strong>Nom</strong></th>
+                 <th>Prénom</th>
+                 <th>Age</th>
+                 <th>Poste</th>
+                 <th>Photo</th>
+
+
+             </tr>";
+                $ch .= "<td>" . $nageur->getIdNageur() . "</td> ";
+                $ch .= "<th>" . $nageur->getNomNageur() . "</th>";
+                $ch .= "<th>" . $nageur->getPrenomNageur() . " </th>";
+                $ch .= "<th>" . $nageur->getPaysNageur() . "</th> ";
+                $ch .= "<th>" . $nageur->getSexeNageur() . "</th> ";
+                $ch .= "<th><a href='?action=update&id_nageur=" . $nageur->getIdNageur() . "'><input class='button is-primary' type='submit' name='envoi' value='Modifier' /></th></a>";
+                $ch .= "<th><a href='?action=delete&id_nageur=" . $nageur->getIdNageur() . "'><input class='button is-primary' type='submit' name='envoi' value='supprimer' /></th></a> ";
+                $ch .= "<td>\n";
             }
         }
-        return $ch . "</ul>\n";
+        return $ch . "</div></div></table></tr>\n";
     }
 }
