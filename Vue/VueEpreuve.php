@@ -22,44 +22,69 @@ class VueEpreuve
 
     /**
      * production d'une string contenant un formulaire HTML
-     * destiné à saisir une nouveau livre ou à modifier un livre existant
+     * destiné à saisir une nouveau epreuve ou à modifier un epreuve existant
      * @param array $assoc
      * @return string
      */
     public function getFormulaire4Epreuve(array $assoc): string
     {
-        $ch = "<form action='".$_SERVER['PHP_SELF']."' method='GET'>\n";
+        $ch = "<div <div  id='formulaire'><div class='column is-1 '></div><div class='column'><form action='" . $_SERVER['PHP_SELF'] . "' method='GET'>\n";
+        $i = 0;
         foreach ($assoc as $col => $val) {
             if (is_array($val)) {
-                $ch .= "$col : <input name='$col' type='".$val['type']
-                    ."' value='".$val['default']."' />\n";
+                if ($i == 0) {
+                    $ch .= "<input class='input is-info' name='$col' type='hidden' value='" . $val['default'] . "'/>\n";
+                } else
+                    $ch .= "$col : <input class='input is-info' name='$col' type='" . $val['type']
+                        . "' value='" . $val['default'] . "'/></a>\n";
+            } else {
+
+                $ch .= "$col : <input class='input is-info' type='$val' name='$col' />\n";
             }
-            else
-                $ch .= "$col : <input type='$val' name='$col' />\n";
+            ++$i;
         }
-        $ch .= "<input type='submit' name='Valider' value='Sauver'/>\n";
 
 
-        return $ch."</form>\n";
+        $ch .= "<center></center><input class='button has-background-success is-outlined' type='submit' name='Valider' value='sauver'/></center>\n";
+
+
+        return $ch . "</form></div><div class='column is-1 '></div></div>\n";
     }
-
 
     public function getAllEpreuve(array $tabEntiteEpreuve): string
     {
-        $ch = "<ul>\n";
+        $ch = "<div class=\"columns\">
+               <div class=\"column\">
+
+               <table class=\"table is-striped is-fluid  \">
+               <tr>";
+
+               $ch .= "<th>id</th>
+                 <th>nom</th>
+                 <th>Type</th>
+                 <th>Status</th>";
+                 
         foreach ($tabEntiteEpreuve as $epreuve) {
             if ($epreuve instanceof EntiteEpreuve) {
-                $ch .= "<li>".$epreuve->getIdEpreuve()." ";
-                $ch .= $epreuve->getNomEpreuve()." ";
-                $ch .= $epreuve->getTypeEpreuve()." ";
-                $ch .= $epreuve->getStatutEpreuve()." ";
 
-                $ch .= "<a href='?action=update&id_epreuve=".$epreuve->getIdEpreuve()."'>Modifier</a> ";
-                $ch .= "<a href='?action=delete&id_epreuve=".$epreuve->getIdEpreuve()."'>Supprimer</a> ";
-                $ch .= "</li>\n";
+                
+                $ch .= "<td>";
+                $ch .= " <tr>
+
+             </tr>";
+                $ch .= "<th>".$epreuve->getIdEpreuve()."</th> ";
+                $ch .= "<th>".$epreuve->getNomEpreuve()."</th>";
+                $ch .= "<th>".$epreuve->getTypeEpreuve()."</th>";
+                $ch .= "<th>".$epreuve->getStatutEpreuve()."</th>";
+               
+
+                $ch .= "<th><a href='?action=update&id_epreuve=" . $epreuve->getIdEpreuve() . "'><input class='button is-primary' type='submit' name='envoi' value='Modifier' /></th></a>";
+                $ch .= "<th><a href='?action=delete&id_epreuve=" . $epreuve->getIdEpreuve() . "'><span class='tag is-danger'>Supprimer<button class='delete is-small' type='submit' name='envoi' value='supprimer'></button></span></th></a> ";
+                $ch .= "<td>\n";
             }
         }
-        return $ch."</ul>\n";
+        return $ch . "</div></div></table></tr>\n";
+
     }
 
 
