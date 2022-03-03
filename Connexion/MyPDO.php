@@ -224,6 +224,13 @@ class MyPDO
         $this->initPDOS_count();
     }
 
+
+
+    public function getCountValue(): int
+    {
+        $this->count();
+        return $this->pdos_count->fetch(PDO::FETCH_NUM)[0];
+    }
     /**
      * @return PDO
      */
