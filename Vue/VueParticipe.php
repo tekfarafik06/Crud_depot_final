@@ -10,59 +10,85 @@ class VueParticipe
 
     public function getHTML4Participe(EntiteParticipe $participe): string
     {
+
         $ch = "<table border='1'>
-        <tr><th>liv_num</th><th>liv_titre</th><th>liv_depot_legal</th></tr><tr>\n";
-        $ch .= "<tr><td>" . $participe->getIdEpreuve() . "</td>\n";
-        $ch .= "<td>" . $participe->getIdNageur() . "</td>\n";
-        $ch .= "<td>" . $participe->getDateEpreuve() . "</td>\n";
-        $ch .= "<td>" . $participe->getPerformance() . "</td>\n";
+        <tr><th>id_nageur</th><th>id_epreuve</th><th></th></tr><tr>\n";
+        $ch .= "<tr>" . $participe->getIdNageur() . "\n";
+        $ch .= "<td>" . $participe->getIdEpreuve() . "</td>\n";
         $ch .= "<td>" . $participe->getClassement() . "</td>\n";
+        $ch .= "<td>" . $participe->getDateEpreuve() . "</td>\n";
         $ch .= "<td>" . $participe->getNomMedaille() . "</td>\n";
+        $ch .= "<td>" . $participe->getPerformance() . "</td>\n";
         $ch .= "</tr></table>\n";
         return $ch;
     }
 
     /**
-     *
-     *
+     * production d'une string contenant un formulaire HTML
+     * destiné à saisir une nouveau nageur ou à modifier un nageur existant
      * @param array $assoc
      * @return string
      */
     public function getFormulaire4Participe(array $assoc): string
     {
-        $ch = "<form action='" . $_SERVER['PHP_SELF'] . "' method='GET'>\n";
+        $ch = "<div <div  id='formulaire'><div class='column is-1 '></div><div class='column'><form action='" . $_SERVER['PHP_SELF'] . "' method='GET'>\n";
+        $i = 0;
         foreach ($assoc as $col => $val) {
             if (is_array($val)) {
-                $ch .= "$col : <input name='$col' type='" . $val['type']
-                    . "' value='" . $val['default'] . "' />\n";
-            } else
-                $ch .= "$col : <input type='$val' name='$col' />\n";
+                if ($i == 0) {
+                    $ch .= "<input class='input is-info' name='$col' type='hidden' value='" . $val['default'] . "'/>\n";
+                } else
+                    $ch .= "$col : <input class='input is-info' name='$col' type='" . $val['type']
+                        . "' value='" . $val['default'] . "'/></a>\n";
+            } else {
+
+                $ch .= "$col : <input class='input is-info' type='$val' name='$col' />\n";
+            }
+            ++$i;
         }
-        $ch .= "<input type='submit' name='Valider' value='Sauver'/>\n";
 
 
-        return $ch . "</form>\n";
+        $ch .= "<center></center><input class='button has-background-success is-outlined' type='submit' name='Valider' value='sauver'/></center>\n";
+
+
+        return $ch . "</form></div><div class='column is-1 '></div></div>\n";
     }
-
-
     public function getAllParticipe(array $tabEntiteParticipe): string
     {
-        $ch = "";
-        foreach ($tabEntiteParticipe as $participe) {
-            $ch .= "";
-            if ($participe instanceof EntiteParticipe) {
-                $id_nageur = $participe->getNomNageur();
-                $id_epreuve = $participe->getNomEpreuve();
+        $ch = "<div class=\"columns\">
+               <div class=\"column\">
 
-                $ch .= "<div  class='box' id='box4' >";
-                $ch .= "<h1>Nom nageur :</h1><a href='CrudNageur.php?id_nageur=$id_nageur'>" . $participe->getNomNageur() . "</a>\n";
-                $ch .= "<h1>Nom epreuve :</h1><a href='CrudEpruve.php?id_nageur=$id_epreuve'>" . $participe->getNomEpreuve() . "</a>\n";
-                $ch .= "<h1> classement:</h1>" . $participe->getClassement() . "</td>\n";
-                $ch .= "<h1>Perfermance</h1>" . $participe->getPerformance() . "</td>\n";
-                $ch .= "<h1>date erpeuve</h1>" . $participe->getDateEpreuve() . "</td>\n";
-                $ch .= "</div>\n";
+               <table class=\"table is-striped is-fluid  \">
+               <tr>";
+        $ch .= "
+               <th><strong>id_nageur</strong></th>
+                <th>id_epreuve</th>
+                <th>classement</th>
+                <th>date epreuve</th>
+                <th>nom médaille</th>
+                <th>performance</th>
+
+
+              </tr>";
+        foreach ($tabEntiteParticipe as $participe) {
+            if ($participe instanceof EntiteParticipe) {
+
+                $ch .= "<td>";
+                $ch .= " <tr>
+
+                 </tr>";
+                $ch .= "<td>" . $participe->getIdNageur() . "</td> ";
+                $ch .= "<th>" . $participe->getIdEpreuve() . "</th>";
+                $ch .= "<th>" . $participe->getClassement() . " </th>";
+                $ch .= "<th>" . $participe->getDateEpreuve() . "</th> ";
+                $ch .= "<th>" . $participe->getNomMedaille() . "</th> ";
+                $ch .= "<th>" . $participe->getPerformance() . "</th> ";
+                $ch .= "<th><a href='?action=update&id_nageur=" . $participe->getIdNageur() . "&id_epreuve=" . $participe->getIdEpreuve() . "'><input class='button is-primary' type='submit' name='envoi' value='Modifier' /></th></a>";
+                $ch .= "<th><a href='?action=delete&id_nageur=" . $participe->getIdNageur() . "&id_epreuve=" . $participe->getIdEpreuve() . "'><input class='button is-primary' type='submit' name='envoi' value='supprimer' /></th></a> ";
+                $ch .= "<td>\n";
             }
         }
-        return $ch;
+        return $ch . "</div></div></table></tr>\n";
     }
 }
+
