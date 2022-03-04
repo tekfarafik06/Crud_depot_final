@@ -1,13 +1,17 @@
 <?php
 
+namespace natation;
+
 class EntiteParticipe
 {
     protected int $id_nageur;
     protected int $id_epreuve;
-    protected VARCHAR  $date_epreuve;
-    protected double $performance;
+    protected int  $date_epreuve;
+    protected float $performance;
     protected int $classement;
-    protected VARCHAR $nom_medaille;
+    protected string $nom_medaille;
+    protected string $nom_nageur;
+    protected string $nom_epreuve;
 
     /** 
      * @return int
@@ -44,15 +48,15 @@ class EntiteParticipe
     /** 
      * @return VARCHAR
      */
-    public function getDateEpreuve(): VARCHAR
+    public function getDateEpreuve(): string
     {
         return $this->date_epreuve;
     }
 
     /** 
-     * @param VARCHAR $date_epreuve
+     * @param int $date_epreuve
      */
-    public function setDateEpreuve(VARCHAR $date_epreuve): void
+    public function setDateEpreuve(int $date_epreuve): void
     {
         $this->date_epreuve = $date_epreuve;
     }
@@ -92,7 +96,7 @@ class EntiteParticipe
     /** 
      * @return VARCHAR
      */
-    public function getNomMedaille(): VARCHAR
+    public function getNomMedaille(): string
     {
         return $this->nom_medaille;
     }
@@ -100,10 +104,42 @@ class EntiteParticipe
     /** 
      * @param VARCHAR $nom_medaille
      */
-    public function setNomMedaille(VARCHAR $nom_medaille): void
+    public function setNomMedaille(string $nom_medaille): void
     {
         $this->nom_medaille = $nom_medaille;
     }
 
 
+    /**
+     * @return string
+     */
+    public function getNomNageur(): string
+    {
+        return $this->nom_nageur;
+    }
+
+    /**
+     * @param string $nom_nageur
+     */
+    public function setNomNageur(string $nom_nageur): void
+    {
+        $this->nom_nageur = $nom_nageur;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getNomEpreuve(): string
+    {
+        return $this->nom_epreuve;
+    }
+
+    /**
+     * @param string $nom_nageur
+     */
+    public function setNomEpreuve(string $nom_epreuve): void
+    {
+        $this->nom_nageur = $nom_epreuve;
+    }
 }
