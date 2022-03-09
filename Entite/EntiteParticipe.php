@@ -20,7 +20,8 @@ class EntiteParticipe
     }
 
     /** 
-     * @param int $id_nageur
+     * @param int $id_nageur 
+     * kjk
      */
     public function setIdNageur(int $id_nageur): void
     {
