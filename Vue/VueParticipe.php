@@ -4,7 +4,7 @@ namespace natation;
 
 use natation\EntiteParticipe;
 
-
+<!-- VueParticipe -->
 class VueParticipe
 {
 

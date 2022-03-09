@@ -10,6 +10,8 @@ class EntiteParticipe
     protected ?float $performance;
     protected int $classement;
     protected ?string $nom_medaille;
+    
+    <!-- EntiteParticipe -->
 
     /** 
      * @return int
