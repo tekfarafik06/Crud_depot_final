@@ -9,9 +9,7 @@ class VueNageur
 {
 
 
-/**
-*echoo
-*/
+
 
     public function getHTML4Nageur(EntiteNageur $nageur): string
     {
