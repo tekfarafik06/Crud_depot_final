@@ -227,7 +227,7 @@ $contenu .=
 
 
 // création d'un nouveau nageur
-// Attention suppose que le nombre de nageur présent correspond au dernier identifiant attribué...
+// Attention suppose que le nombre de nageurs présent correspond au dernier identifiant attribué...
 $contenu .= "<p><a  href='?action=create'>Ajouter nageur";
 $contenu .= $nbNageurs + 1;
 $contenu .= "</a> </p>";

@@ -11,8 +11,7 @@ class EntiteNageur
     protected string $sexe_nageur;
 
     /**
-     * @return int 
-     *
+     * @return int
      */
     public function getIdNageur(): int
     {
