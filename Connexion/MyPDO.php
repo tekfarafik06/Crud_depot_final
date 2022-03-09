@@ -7,7 +7,7 @@ use PDOException;
 use PDOStatement;
 
 include "VariableDsn.php";
-
+<!-- MyPDO -->
 class MyPDO
 {
 
