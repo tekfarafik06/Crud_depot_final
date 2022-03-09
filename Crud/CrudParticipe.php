@@ -22,83 +22,85 @@ require_once "../Entite/EntiteParticipe.php";
 function getDebutHTML(): string
 {
     return "<!DOCTYPE html>
-    <html>
-      <head>
+   <html>
+  <head>
         <meta charset=" . "'utf-8'" . ">
         <meta http-equiv=" . "'X-UA-Compatible'" . " content=" . "'IE=edge'" . ">
         <meta name=" . "'viewport'" . " content=" . "width=device-width, initial-scale=1" . ">
-        <title>Participe</title>
+        <title>NAGEUR</title>
         <link href='style.css' rel='stylesheet'>
         <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl' crossorigin='anonymous'>
        
       </head>
       
       <body class='bg-img7'>
-     <link rel=" . "'stylesheet'" . " href=" . "'https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css'" . ">
+        <link rel=" . "'stylesheet'" . " href=" . "'https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css'" . ">
         <script defer src=" . "'https://use.fontawesome.com/releases/v5.3.1/js/all.js'" . "></script>
        <br><br>
     
         <section>
+        
         <center>
-        <nav class='navbar is-success is-fixed-top' role='navigation' aria-label='main navigation'>
-      <div class='navbar-brand'>
-     
-        <a class='navbar-item' href='index.php'>
-          <img src='./Image/logo.png' width='112' height='28'>
-        </a>
-    
-        <a role=button' class='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>
-          <span aria-hidden='true'></span>
-          <span aria-hidden='true'></span>
-          <span aria-hidden='true'></span>
-        </a>
-      </div>
-    
-      <div id='navbarBasicExample' class='navbar-menu'>
-        <div class='navbar-start'>
-        <a class='navbar-item' href='index.php'>
-            Accueil
-          </a>
-          <a class='navbar-item' href='CrudNageur.php'>
-            nageur
-          </a>
-          <a class='navbar-item' href='CrudEpreuve.php'>
-            Epreuve
-          </a>
-          <a class='navbar-item' href='CrudParticipe.php'>
-          Participe
-        </a>
-    
-          </div>
-            </div>
-            </nav>
-    
-        </section>
-     
-        &nbsp;
-        <center><h1 id='titre'>Liste des participants </h1></center>&nbsp;
-    ";
+            <nav class='navbar is-black is-fixed-top' role='navigation' aria-label='main navigation'>
+              <div class='  navbar-brand'>
+             
+                <a class='navbar-item' href='../index.html'>
+                  <img src='../assets/images/logo.svg' width='112' height='28'>
+                </a>
+            
+                <a role=button' class='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>
+                  <span aria-hidden='true'></span>
+                  <span aria-hidden='true'></span>
+                  <span aria-hidden='true'></span>
+                </a>
+              </div>
+               
+              <div id='navbarBasicExample' class='navbar-menu'>
+                <div class='navbar-start'>
+                <a class='navbar-item' href='index.php'>
+                    Accueil
+                  </a>
+                  <a class='navbar-item' href='CrudNageur.php'>
+                    nageur
+                  </a>
+                  <a class='navbar-item' href='CrudEpreuve.php'>
+                    Epreuve
+                  </a>
+                    <a class='navbar-item' href='CrudParticipe.php'>
+                    Participe
+                  </a>
+                  </div>
+                </div>-
+                    </nav>
+            
+                </section>
+             
+    &nbsp;
+       <center><h1 id='titre'>Liste des participants </h1></center>&nbsp;
+
+";
+
 }
 
 function getFinHTML(): string
 {
     return "
    </body>
-<link href='style.css' rel='stylesheet'>
+<link href='../style.css' rel='stylesheet'>
     
   <footer class='footer'>
     <div class='footer-left'>
-        <img src='logo.jpeg' alt=''>
+        <img src='../image/logo5.jpg' alt=''>
         
         <p class='box' id='box'><br>jeux olympique de natation , vous trouverez si dessous toute les information
         nécessaire pour nous contacter,le code source, les framwark utiliser</p><br>
         
         <div class='socials'>
-            <a href='https://getbootstrap.com/'><i class='bootsrapicone'><img src='./Image/bootstrap_4-icon.png'></i></a>
-            <a href='https://webmail.univ-lehavre.fr/SOGo/so/am184100/Mail/#!/Mail/0/INBOX'><i class='emailicone'><img src='./Image/mail.jpg'></i></a>
-            <a href='https://www-apps.univ-lehavre.fr/forge/users/sign_in'><i class='gitlabicone'><img src='./Image/gitlab.png'></i></a>
-            <a href='#'><i class='githubicone'><img src='./Image/github.png'></i></a>
-            <a href='https://bulma.io/'><i class='bulmaicone'><img src='./Image/bulma.png'></i></a>
+            <a href='https://getbootstrap.com/'><i class='bootsrapicone'><img src='../image/bootstrap_4-icon.png'></i></a>
+            <a href='https://webmail.univ-lehavre.fr/SOGo/so/am184100/Mail/#!/Mail/0/INBOX'><i class='emailicone'><img src='../image/mail.jpg'></i></a>
+            <a href='https://www-apps.univ-lehavre.fr/forge/users/sign_in'><i class='gitlabicone'><img src='../image/gitlab.png'></i></a>
+            <a href='#'><i class='githubicone'><img src='../image/github.png'></i></a>
+            <a href='https://bulma.io/'><i class='bulmaicone'><img src='../image/bulma.png'></i></a>
             
         </div>
     </div>
@@ -184,7 +186,7 @@ if (isset($_GET['action']))
                 'id_epreuve' => array('type' => 'number', 'default' => $participe->getIdEpreuve()),
                 'classement' => array('type' => 'number', 'default' => $participe->getClassement()),
                 'date_epreuve' => array('type' => 'text', 'default' => $participe->getDateEpreuve()),
-                'nom_medaille' => array('type' => 'text', 'default' => $participe->getNomMedaille()),
+                'nom_medaille' =>  array('type' => 'text', 'default' => $participe->getNomMedaille()),
                 'performance' => array('type' => 'number', 'default' => $participe->getPerformance()),
             ));
             $_SESSION['etat'] = 'modification';
@@ -199,39 +201,59 @@ if (isset($_GET['action']))
 
 else
     if (isset($_SESSION['etat']))
-        switch ($_SESSION['etat']) {
-            case 'création':
-                if (isset($_GET['id_nageur']) && isset($_GET['id_epreuve']) && isset($_GET['classement']) && isset($_GET['date_epreuve']) && isset($_GET['nom_medaille']) && isset($_GET['performance']))
-                    $myPDOParticipe->insertParticipe(array(
+    switch ($_SESSION['etat']) {
+        case 'création':
+            if (isset($_GET['id_nageur']) && isset($_GET['id_epreuve']) && isset($_GET['classement']) && isset($_GET['date_epreuve']) && isset($_GET['nom_medaille']) && isset($_GET['performance'])) {
+                //echo $_GET['id_nageur'];
+                $verif = $myPDOParticipe->countParticipants($_GET['id_nageur'], $_GET['id_epreuve']);
+
+                if($verif == 0) {
+                    $myPDOParticipe->insert(array(
                         'id_nageur' => $_GET['id_nageur'],
                         'id_epreuve' => $_GET['id_epreuve'],
                         'date_epreuve' => $_GET['date_epreuve'],
-                        'nom_medaille' => $_GET['nom_medaille'],
+                        'performance' => $_GET['performance'],
                         'classement' => $_GET['classement'],
-                        'performance' => $_GET['performance']
+                        'nom_medaille' => $_GET['nom_medaille']
                     ));
-                else
-                    $_SESSION['Action'] = 'read';
-                $_SESSION['etat'] = 'créé';
-                break;
-            case 'modification':
-                $myPDOParticipe->updateParticipe($_GET['id_nageur'], $_GET['id_epreuve'], array('id_nageur' => $_GET['id_nageur'], 'id_epreuve' => $_GET['id_epreuve'], 'nom_medaille' => $_GET['nom_medaille'], 'performance' => $_GET['performance'], 'date_epreuve' => $_GET['date_epreuve'], 'classement' => $_GET['classement']));
-                $_SESSION['etat'] = 'modifié';
-                break;
-            case 'suppression':
-                $_SESSION['etat'] = 'supprimé';
-                break;
-            case 'créé':
-            case 'modifié':
-            case 'supprimé':
-            default:
-                $_SESSION['etat'] = 'neutre';
-        }
+                }
 
+            }
+            else
+                $_SESSION['Action'] = 'read';
+            $_SESSION['etat'] = 'créé';
+            break;
+        case 'modification':
+            //echo "epreeeuve ".$_GET['id_epreuve'];
+            //echo "medaille " . $_GET['nom_medaille'];
 
-// affichage du nombre total de livre :
-$nbParticipe = $myPDOParticipe->count();
-$message .= "<p>La table participe contient " . $nbParticipe . " enregistrements.</p>\n";
+            $epr = $_GET['id_epreuve'];
+            $medaille = $_GET['nom_medaille'];
+            $participe = array(
+                'id_nageur' => $_GET['id_nageur'],
+                'id_epreuve' => $epr,
+                'nom_medaille' =>$medaille,
+                'performance' => $_GET['performance'],
+                'date_epreuve' => $_GET['date_epreuve'],
+                'classement' => $_GET['classement']
+            );
+
+            $myPDOParticipe->updateParticipe('id_nageur','id_epreuve', $participe);
+//            $myPDOParticipe->update($_GET['id_nageur'], $epr, $nageur);
+
+            //echo "updated";
+            $_SESSION['etat'] = 'modifié';
+            break;
+        case 'suppression':
+            $_SESSION['etat'] = 'supprimé';
+            break;
+        case 'créé':
+        case 'modifié':
+        case 'supprimé':
+        default:
+            $_SESSION['etat'] = 'neutre';
+    }
+
 
 // sélection/modification/suppression/ d'un livre
 
@@ -253,11 +275,10 @@ $contenu .=
 
 // création d'un nouveau nageur
 // Attention suppose que le nombre de nageurs présent correspond au dernier identifiant attribué...
-/*
-$contenu .= "<p><a href='?action=create'>Créer nageur";
+
+$contenu .= "<p><a  href='?action=create'>Ajouter participant";
 $contenu .= $nbParticipe + 1;
 $contenu .= "</a> </p>";
-*/
 
 // récupération et affichage de la liste des participants avec liens vers édition/suppresion
 
@@ -270,4 +291,3 @@ echo getDebutHTML();
 echo $message;
 echo $contenu;
 echo getFinHTML();
-
