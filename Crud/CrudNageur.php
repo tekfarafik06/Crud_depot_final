@@ -32,11 +32,11 @@ function getDebutHTML(): string
 
     <section>
     <center>
-    <nav class='navbar is-success is-fixed-top' role='navigation' aria-label='main navigation'>
+    <nav class='navbar is-black is-fixed-top' role='navigation' aria-label='main navigation'>
   <div class='navbar-brand'>
  
     <a class='navbar-item' href='index.php'>
-      <img src='./Image/logo.png' width='112' height='28'>
+                  <img src='../assets/images/logo.svg' width='112' height='28'>
     </a>
 
     <a role=button' class='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>
@@ -48,7 +48,7 @@ function getDebutHTML(): string
 
   <div id='navbarBasicExample' class='navbar-menu'>
     <div class='navbar-start'>
-    <a class='navbar-item' href='index.php'>
+    <a class='navbar-item' href='../index.html'>
         Accueil
       </a>
       <a class='navbar-item' href='CrudNageur.php'>
@@ -57,7 +57,9 @@ function getDebutHTML(): string
       <a class='navbar-item' href='CrudEpreuve.php'>
         Epreuve
       </a>
-
+        <a class='navbar-item' href='CrudParticipe.php'>
+        Participe
+      </a>
       </div>
         </div>
         </nav>
@@ -73,21 +75,21 @@ function getFinHTML(): string
 {
     return "
    </body>
-<link href='style.css' rel='stylesheet'>
+<link href='../style.css' rel='stylesheet'>
     
   <footer class='footer'>
     <div class='footer-left'>
-        <img src='logo.jpeg' alt=''>
+        <img src='../image/logo5.jpg' alt=''>
         
         <p class='box' id='box'><br>jeux olympique de natation , vous trouverez si dessous toute les information
         nécessaire pour nous contacter,le code source, les framwark utiliser</p><br>
         
         <div class='socials'>
-            <a href='https://getbootstrap.com/'><i class='bootsrapicone'><img src='./Image/bootstrap_4-icon.png'></i></a>
-            <a href='https://webmail.univ-lehavre.fr/SOGo/so/am184100/Mail/#!/Mail/0/INBOX'><i class='emailicone'><img src='./Image/mail.jpg'></i></a>
-            <a href='https://www-apps.univ-lehavre.fr/forge/users/sign_in'><i class='gitlabicone'><img src='./Image/gitlab.png'></i></a>
-            <a href='#'><i class='githubicone'><img src='./Image/github.png'></i></a>
-            <a href='https://bulma.io/'><i class='bulmaicone'><img src='./Image/bulma.png'></i></a>
+            <a href='https://getbootstrap.com/'><i class='bootsrapicone'><img src='../image/bootstrap_4-icon.png'></i></a>
+            <a href='https://webmail.univ-lehavre.fr/SOGo/so/am184100/Mail/#!/Mail/0/INBOX'><i class='emailicone'><img src='../image/mail.jpg'></i></a>
+            <a href='https://www-apps.univ-lehavre.fr/forge/users/sign_in'><i class='gitlabicone'><img src='../image/gitlab.png'></i></a>
+            <a href='#'><i class='githubicone'><img src='../image/github.png'></i></a>
+            <a href='https://bulma.io/'><i class='bulmaicone'><img src='../image/bulma.png'></i></a>
             
         </div>
     </div>
@@ -134,7 +136,7 @@ function getFinHTML(): string
 session_start();
 
 // initialisation de la connexion via l'instance de MyPDO
-$myPDONageur = new MyPDO('mysql', $_ENV['host'], $_ENV['db'], $_ENV['user'], $_ENV['password'], 'nageur');;
+$myPDONageur = new MyPDO('mysql', $_ENV['host'], $_ENV['db'], $_ENV['user'], $_ENV['password'], 'nageur');
 
 
 
@@ -155,8 +157,13 @@ if (isset($_GET['action']))
             $_SESSION['etat'] = 'lecture';
             break;
         case 'create':
-            $nbNageurs = $myPDONageur->getCountValue();
-            $contenu .= $vue->getFormulaire4Nageur(array('id_nageur' => array('type' => 'number', 'default' => $nbNageurs + 1), 'nom_nageur' => 'text', 'prenom_nageur' => 'text', 'pays_nageur' => 'text', 'sexe_nageur' => 'text'));
+            $nbNageurs = $myPDONageur->count();
+            $contenu .= $vue->getFormulaire4Nageur(array
+            ('id_nageur' => array(
+                'type' => 'number', 'default' => $nbNageurs + 1),
+                'nom_nageur' => 'text',
+                    'prenom_nageur' => 'text', 'pays_nageur' => 'text', 'sexe_nageur' => 'text')
+            );
             $_SESSION['etat'] = 'création';
             break;
         case 'update':
@@ -200,9 +207,7 @@ else
     }
 
 
-// affichage du nombre total de nageur :
-$nbNageurs = $myPDONageur->getCountValue();
-$message .= "<h1>La table nageur contient " . $nbNageurs . " enregistrements.</h1>\n";
+
 
 // sélection/modification/suppression/ d'un nageur
 
@@ -223,7 +228,7 @@ $contenu .=
 
 // création d'un nouveau nageur
 // Attention suppose que le nombre de nageurs présent correspond au dernier identifiant attribué...
-$contenu .= "<p><a href='?action=create'>Créer nageur";
+$contenu .= "<p><a  href='?action=create'>Ajouter nageur";
 $contenu .= $nbNageurs + 1;
 $contenu .= "</a> </p>";
 
