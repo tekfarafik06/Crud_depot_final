@@ -6,12 +6,10 @@ class EntiteParticipe
 {
     protected int $id_nageur;
     protected int $id_epreuve;
-    protected int  $date_epreuve;
-    protected float $performance;
+    protected string  $date_epreuve;
+    protected ?float $performance;
     protected int $classement;
-    protected string $nom_medaille;
-    protected string $nom_nageur;
-    protected string $nom_epreuve;
+    protected ?string $nom_medaille;
 
     /** 
      * @return int
@@ -54,9 +52,9 @@ class EntiteParticipe
     }
 
     /** 
-     * @param int $date_epreuve
+     * @param VARCHAR $date_epreuve
      */
-    public function setDateEpreuve(int $date_epreuve): void
+    public function setDateEpreuve(string $date_epreuve): void
     {
         $this->date_epreuve = $date_epreuve;
     }
@@ -96,50 +94,16 @@ class EntiteParticipe
     /** 
      * @return VARCHAR
      */
-    public function getNomMedaille(): string
+    public function getNomMedaille(): ?string
     {
         return $this->nom_medaille;
     }
 
     /** 
-     * @param VARCHAR $nom_medaille
+     * @param string $nom_medaille
      */
     public function setNomMedaille(string $nom_medaille): void
     {
         $this->nom_medaille = $nom_medaille;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getNomNageur(): string
-    {
-        return $this->nom_nageur;
-    }
-
-    /**
-     * @param string $nom_nageur
-     */
-    public function setNomNageur(string $nom_nageur): void
-    {
-        $this->nom_nageur = $nom_nageur;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getNomEpreuve(): string
-    {
-        return $this->nom_epreuve;
-    }
-
-    /**
-     * @param string $nom_nageur
-     */
-    public function setNomEpreuve(string $nom_epreuve): void
-    {
-        $this->nom_nageur = $nom_epreuve;
     }
 }
