@@ -10,7 +10,7 @@ class VueNageur
 
 
 /**
-*ech
+*echo
 */
 
     public function getHTML4Nageur(EntiteNageur $nageur): string
