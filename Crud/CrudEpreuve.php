@@ -13,61 +13,62 @@ require_once "../Entite/EntiteEpreuve.php";
 
 
 
-function getDebutHTML(): string
-{
-    return "<!doctype html>
-<html lang=\"fr\">
-<head>
-<meta charset=" . "'utf-8'" . ">
-<meta http-equiv=" . "'X-UA-Compatible'" . " content=" . "'IE=edge'" . ">
-<meta name=" . "'viewport'" . " content=" . "width=device-width, initial-scale=1" . ">
-<title>NAGEUR</title>
-<link href='style.css' rel='stylesheet'>
-<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl' crossorigin='anonymous'>
+function getDebutHTML(): string {
+    return "<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=" . "'utf-8'" . ">
+    <meta http-equiv=" . "'X-UA-Compatible'" . " content=" . "'IE=edge'" . ">
+    <meta name=" . "'viewport'" . " content=" . "width=device-width, initial-scale=1" . ">
+    <title>Epreuve</title>
+    <link href='style.css' rel='stylesheet'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl' crossorigin='anonymous'>
+   
+  </head>
+  
+  <body class='bg-img7'>
+ <link rel=" . "'stylesheet'" . " href=" . "'https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css'" . ">
+    <script defer src=" . "'https://use.fontawesome.com/releases/v5.3.1/js/all.js'" . "></script>
+   <br><br>
 
-</head>
+    <section>
+    <center>
+    <nav class='navbar is-black is-fixed-top' role='navigation' aria-label='main navigation'>
+  <div class='navbar-brand'>
+ 
+    <a class='navbar-item' href='index.php'>
+                  <img src='../assets/images/logo.svg' width='112' height='28'>
+    </a>
 
-<body class='bg-img7'>
-<link rel=" . "'stylesheet'" . " href=" . "'https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css'" . ">
-<script defer src=" . "'https://use.fontawesome.com/releases/v5.3.1/js/all.js'" . "></script>
-<br><br>
-
-<section>
-<center>
-<nav class='navbar is-success is-fixed-top' role='navigation' aria-label='main navigation'>
-<div class='navbar-brand'>
-
-<a class='navbar-item' href='index.php'>
-  <img src='./Image/logo.png' width='112' height='28'>
-</a>
-
-<a role=button' class='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>
-  <span aria-hidden='true'></span>
-  <span aria-hidden='true'></span>
-  <span aria-hidden='true'></span>
-</a>
-</div>
-
-<div id='navbarBasicExample' class='navbar-menu'>
-<div class='navbar-start'>
-<a class='navbar-item' href='index.php'>
-    Accueil
-  </a>
-  <a class='navbar-item' href='CrudNageur.php'>
-    nageur
-  </a>
-  <a class='navbar-item' href='CrudEpreuve.php'>
-    Epreuve
-  </a>
-
+    <a role=button' class='navbar-burger burger' aria-label='menu' aria-expanded='false' data-target='navbarBasicExample'>
+      <span aria-hidden='true'></span>
+      <span aria-hidden='true'></span>
+      <span aria-hidden='true'></span>
+    </a>
   </div>
-    </div>
-    </nav>
 
-</section>
+  <div id='navbarBasicExample' class='navbar-menu'>
+    <div class='navbar-start'>
+    <a class='navbar-item' href='../index.html'>
+        Accueil
+      </a>
+      <a class='navbar-item' href='CrudNageur.php'>
+        nageur
+      </a>
+      <a class='navbar-item' href='CrudEpreuve.php'>
+        Epreuve
+      </a>
+        <a class='navbar-item' href='CrudParticipe.php'>
+        Participe
+      </a>
+      </div>
+        </div>
+        </nav>
 
-&nbsp;
-
+    </section>
+ 
+    &nbsp;
+    <center><h1 id='titre'>Liste des épreuves </h1></center>&nbsp;
 ";
 }
 
@@ -107,7 +108,7 @@ function getFinHTML(): string
             </ul>
         </li>
         <li class='features'>
-            <h2>Adresse Mail</h2>
+            <h2>Adresses Mail</h2>
             <ul class='box'>
                 <li><a>thiziri.kechidi@etu.univ-lehavre.fr</a></li>
                 <li><a>salim.mahdjane@etu.univ-lehavre.fr</a></li>
@@ -117,20 +118,20 @@ function getFinHTML(): string
             </ul>
         </li>
         <li >
-            <h2>Contenue Page</h2>
+            <h2>Contenu de la  Page</h2>
             <ul class='box' >
               
             </ul>
         </li>
         </ul>
         <div class='footer-bottom'>
-            <p>PROJET INFO POUR LE WEB  &copy;COUD </p>
+            <p> Projet crud </p>
         </div>
     </footer>
     
     </html>
     ";
-    }
+}
 
 
 session_start();
@@ -159,17 +160,23 @@ if (isset($_GET['action']))
             $_SESSION['etat'] = 'lecture';
             break;
         case 'create':
-            $nbEpreuves = $myPDOEpreuve->getCountValue();
-            $contenu .= $vue->getFormulaire4Epreuve(array('id_epreuve' => array('type' => 'number', 'default' => $nbEpreuves + 1), 'nom_epreuve' => 'text', 'type_epreuve' => 'text', 'statut_epreuve' => 'text'));
+            $nbEpreuves = $myPDOEpreuve->count();
+            $contenu .= $vue->getinsert(array(
+                'id_epreuve' => array(
+                    'type' => 'number',
+                    'default' => $nbEpreuves + 1),
+                'nom_epreuve' => 'text', 'type_epreuve' => 'text', 'statut_epreuve' => 'text'));
             $_SESSION['etat'] = 'création';
+
+
             break;
         case 'update':
             $epreuve = $myPDOEpreuve->get('id_epreuve', $_GET['id_epreuve']);
-            $contenu .= $vue->getFormulaire4Epreuve(array(
-                'id_epreuve' => array('type' => 'number', 'default' => $epreuve->getIdEpreuve()),
-                'nom_epreuve' => array('type' => 'text', 'default' => $epreuve->getNomEpreuve()),
-                'type_epreuve' => array('type' => 'text', 'default' => $epreuve->getTypeEpreuve()),
-                'statut_epreuve' => array('type' => 'text', 'default' => $epreuve->getStatutEpreuve()),
+            $contenu .= $vue->getupdete(array(
+                'id_epreuve' => array('balise'=>'input','type' => 'text', 'default' => $epreuve->getIdEpreuve(), 'titre'=> 'id'),
+                'nom_epreuve' => array('balise'=>'select','type' => 'text', 'default' => $epreuve->getNomEpreuve(), 'titre' => "Nom d'epreuve", 'options' => array('50m', '100m', '200m', '400m', '800m', '1500m')),
+                'type_epreuve' => array('balise'=>'select','type' => 'text', 'default' => $epreuve->getTypeEpreuve(), 'titre'=> 'Type depreuve', 'options' => array('Papillon', 'Dos', 'Brasse', 'Nage_liber')),
+                'statut_epreuve' => array('balise'=>'select','type' => 'text', 'default' => $epreuve->getStatutEpreuve(), 'titre'=> 'Statut epreuve',  'options' => array('Finale', 'Demi_finale1', 'Demi_finale2', 'Series')),
             ));
             $_SESSION['etat'] = 'modification';
             break;
@@ -185,11 +192,11 @@ else
     if (isset($_SESSION['etat']))
     switch ($_SESSION['etat']) {
         case 'création':
-            $myPDOEpreuve->insert(array('id_epreuve' => $_GET['id_epreuve'], 'nom_epreuve' => $_GET['nom_epreuve'], 'type_epreuve' => $_GET['type_epreuve'], 'statut_epreuve' => $_GET['statut_epreuve']));
+            $myPDOEpreuve->insert(array('id_epreuve' => $_GET['null'], 'nom_epreuve' => $_GET['nom_epreuve'], 'type_epreuve' => $_GET['type_epreuve'], 'statut_epreuve' => $_GET['statut_epreuve']));
             $_SESSION['etat'] = 'créé';
             break;
         case 'modification':
-            $myPDOEpreuve->update('id_epreuve', array('id_epreuve' => $_GET['id_epreuve'], 'nom_epreuve' => $_GET['nom_epreuve'], 'type_epreuve' => $_GET['type_epreuve'], 'statut_epreuve' => $_GET['statut_epreuve']));
+            $myPDOEpreuve->update('id_epreuve', array('id_epreuve' => $_POST['id_epreuve'], 'nom_epreuve' => $_POST['nom_epreuve'], 'type_epreuve' => $_POST['type_epreuve'], 'statut_epreuve' => $_POST['statut_epreuve']));
             $_SESSION['etat'] = 'modifié';
             break;
         case 'suppression':
@@ -203,13 +210,10 @@ else
     }
 
 
-$nbEpreuves = $myPDOEpreuve->getCountValue();
-$message .= "<p>La table epreuve contient " . $nbEpreuves . " enregistrements.</p>\n";
-
-
 $contenu .=
-"
-<div><div class='columns is-1 '></div><div class='column'><form action='?' method='GET'><table class='table is-striped is-narrow is-hoverable is-fullwidth'>
+    "
+<div><div class='columns is-1 '></div><div class='column'><form action='?' method='GET'>
+<table class='table is-striped is-narrow is-hoverable is-fullwidth'>
     <tr><td>
     <select class='select is-rounded is-fullwidth is-black is-size-6'  name='action'>
     <option value='read'>Lire</option>
@@ -222,8 +226,8 @@ $contenu .=
 
 // création d'un nouveau epreuve
 // Attention suppose que le nombre de epreuves présent correspond au dernier identifiant attribué...
-$contenu .= "<p><a href='?action=create'>Créer epreuve";
-$contenu .= $nbEpreuves + 1;
+$contenu .= "<p><a href='?action=create'>Ajouter epreuve";
+//$contenu .= $nbEpreuves + 1;
 $contenu .= "</a> </p>";
 
 // récupération et affichage de la liste des epreuves avec liens vers édition/suppresion
