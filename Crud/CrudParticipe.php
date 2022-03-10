@@ -178,7 +178,23 @@ if (isset($_GET['action']))
                 'performance' => 'number'
             ));
             $_SESSION['etat'] = 'création';
-           
+            break;
+        case 'update':
+            $participe = $myPDOParticipe->get('id_nageur', $_GET['id_nageur']/*, 'id_epreuve', $_GET['id_epeuve']*/);
+            $contenu .= $vue->getFormulaire4Participe(array(
+                'id_nageur' => array('type' => 'number', 'default' => $participe->getIdNageur()),
+                'id_epreuve' => array('type' => 'number', 'default' => $participe->getIdEpreuve()),
+                'classement' => array('type' => 'number', 'default' => $participe->getClassement()),
+                'date_epreuve' => array('type' => 'text', 'default' => $participe->getDateEpreuve()),
+                'nom_medaille' =>  array('type' => 'text', 'default' => $participe->getNomMedaille()),
+                'performance' => array('type' => 'number', 'default' => $participe->getPerformance()),
+            ));
+            $_SESSION['etat'] = 'modification';
+            break;
+        case 'delete':
+            $myPDOParticipe->deleteParticipe($_GET['id_nageur'], $_GET['id_epreuve']);
+            $_SESSION['etat'] = 'suppression';
+            break;
         default:
             $message .= "<p>Action " . $_GET['action'] . " non implémentée.</p>\n";
     }
@@ -207,9 +223,33 @@ else
                 $_SESSION['Action'] = 'read';
             $_SESSION['etat'] = 'créé';
             break;
-        
+        case 'modification':
+            //echo "epreeeuve ".$_GET['id_epreuve'];
+            //echo "medaille " . $_GET['nom_medaille'];
+
+            $epr = $_GET['id_epreuve'];
+            $medaille = $_GET['nom_medaille'];
+            $participe = array(
+                'id_nageur' => $_GET['id_nageur'],
+                'id_epreuve' => $epr,
+                'nom_medaille' =>$medaille,
+                'performance' => $_GET['performance'],
+                'date_epreuve' => $_GET['date_epreuve'],
+                'classement' => $_GET['classement']
+            );
+
+            $myPDOParticipe->updateParticipe('id_nageur','id_epreuve', $participe);
+//            $myPDOParticipe->update($_GET['id_nageur'], $epr, $nageur);
+
+            //echo "updated";
+            $_SESSION['etat'] = 'modifié';
+            break;
+        case 'suppression':
+            $_SESSION['etat'] = 'supprimé';
+            break;
         case 'créé':
-      
+        case 'modifié':
+        case 'supprimé':
         default:
             $_SESSION['etat'] = 'neutre';
     }
