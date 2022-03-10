@@ -79,7 +79,7 @@ function getFinHTML(): string
     
   <footer class='footer'>
     <div class='footer-left'>
-        <img src='../image/logo5.jpg' alt=''>
+        <img src='../assets/images/logo.svg' alt=''>
         
         <p class='box' id='box'><br>jeux olympique de natation , vous trouverez si dessous toute les information
         nécessaire pour nous contacter,le code source, les framwark utiliser</p><br>

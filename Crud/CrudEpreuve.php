@@ -76,60 +76,60 @@ function getFinHTML(): string
 {
     return "<!-- contenu -->
     </body>
-    <link href='style.css' rel='stylesheet'>
-        
-      <footer class='footer'>
-        <div class='footer-left'>
-            <img src='logo.jpeg' alt=''>
-            
-            <p class='box' id='box'><br>jeux olympique de natation , vous trouverez si dessous toute les information
-            nécessaire pour nous contacter,le code source, les framwark utiliser</p><br>
-            
-            <div class='socials'>
-                <a href='https://getbootstrap.com/'><i class='bootsrapicone'><img src='./Image/bootstrap_4-icon.png'></i></a>
-                <a href='https://webmail.univ-lehavre.fr/SOGo/so/am184100/Mail/#!/Mail/0/INBOX'><i class='emailicone'><img src='./Image/mail.jpg'></i></a>
-                <a href='https://www-apps.univ-lehavre.fr/forge/users/sign_in'><i class='gitlabicone'><img src='./Image/gitlab.png'></i></a>
-                <a href='#'><i class='githubicone'><img src='./Image/github.png'></i></a>
-                <a href='https://bulma.io/'><i class='bulmaicone'><img src='./Image/bulma.png'></i></a>
-                
-            </div>
-        </div>
-        
-        <ul class='footer-right'>
-        
-         <li >
-            <h2>Membres de group</h2>
-            <ul class='box'>
-                <li ><a>thiziri kechidi </a></li>
-                <li><a>salim mahdjane</a></li>
-                <li><a >rafik tekfa</a></li>
-                <li><a >mourad hadjali</a></li>
-                
-            </ul>
-        </li>
-        <li class='features'>
-            <h2>Adresses Mail</h2>
-            <ul class='box'>
-                <li><a>thiziri.kechidi@etu.univ-lehavre.fr</a></li>
-                <li><a>salim.mahdjane@etu.univ-lehavre.fr</a></li>
-                <li><a>rafik.tekfa@etu.univ-lehavre.fr</a></li>
-                <li><a>mourad.hajdali@etu.univ-lehavre.fr</a></li>
+    <link href='../style.css' rel='stylesheet'>
     
-            </ul>
-        </li>
-        <li >
-            <h2>Contenu de la  Page</h2>
-            <ul class='box' >
-              
-            </ul>
-        </li>
+  <footer class='footer'>
+    <div class='footer-left'>
+        <img src='../assets/images/logo.svg' alt=''>
+        
+        <p class='box' id='box'><br>jeux olympique de natation , vous trouverez si dessous toute les information
+        nécessaire pour nous contacter,le code source, les framwark utiliser</p><br>
+        
+        <div class='socials'>
+            <a href='https://getbootstrap.com/'><i class='bootsrapicone'><img src='../image/bootstrap_4-icon.png'></i></a>
+            <a href='https://webmail.univ-lehavre.fr/SOGo/so/am184100/Mail/#!/Mail/0/INBOX'><i class='emailicone'><img src='../image/mail.jpg'></i></a>
+            <a href='https://www-apps.univ-lehavre.fr/forge/users/sign_in'><i class='gitlabicone'><img src='../image/gitlab.png'></i></a>
+            <a href='#'><i class='githubicone'><img src='../image/github.png'></i></a>
+            <a href='https://bulma.io/'><i class='bulmaicone'><img src='../image/bulma.png'></i></a>
+            
+        </div>
+    </div>
+    
+    <ul class='footer-right'>
+    
+     <li >
+        <h2>Membres de group</h2>
+        <ul class='box'>
+            <li ><a>thiziri kechidi </a></li>
+            <li><a>salim mahdjane</a></li>
+            <li><a >rafik tekfa</a></li>
+            <li><a >mourad hadjali</a></li>
+            
         </ul>
-        <div class='footer-bottom'>
-            <p> Projet crud </p>
-        </div>
-    </footer>
-    
-    </html>
+    </li>
+    <li class='features'>
+        <h2>Adresse Mail</h2>
+        <ul class='box'>
+            <li><a>thiziri.kechidi@etu.univ-lehavre.fr</a></li>
+            <li><a>salim.mahdjane@etu.univ-lehavre.fr</a></li>
+            <li><a>rafik.tekfa@etu.univ-lehavre.fr</a></li>
+            <li><a>mourad.hajdali@etu.univ-lehavre.fr</a></li>
+
+        </ul>
+    </li>
+    <li >
+        <h2>Contenue Page</h2>
+        <ul class='box' >
+          
+        </ul>
+    </li>
+    </ul>
+    <div class='footer-bottom'>
+        <p>PROJET INFO POUR LE WEB  &copy;COUD </p>
+    </div>
+</footer>
+
+</html>
     ";
 }
 
