@@ -10,8 +10,6 @@ class EntiteParticipe
     protected ?float $performance;
     protected int $classement;
     protected ?string $nom_medaille;
-    
-    <!-- EntiteParticipe -->
 
     /** 
      * @return int
@@ -22,8 +20,7 @@ class EntiteParticipe
     }
 
     /** 
-     * @param int $id_nageur 
-     * kjk
+     * @param int $id_nageur
      */
     public function setIdNageur(int $id_nageur): void
     {
